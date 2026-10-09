@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <script src="tailwind.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>404 — Page Not Found | SecureLock</title>
+
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #111827;
+            --color-secondary-text: #4B5563;
+            --color-accent: #EAB308;
+            --color-accent-light: #B45309;
+            --color-border: #E5E7EB;
+            --color-hover: #F9FAFB;
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #FFFFFF;
+            --color-secondary-text: #9CA3AF;
+            --color-accent: #FACC15;
+            --color-accent-light: #FEF08A;
+            --color-border: #374151;
+            --color-hover: #1F2937;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #EAB308 0%, #B45309 100%);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #EAB308 0%, #B45309 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(46,125,50,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(46,125,50,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #FACC15;
+            border-color: #FACC15;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #FACC15;
+            color: #000;
+        }
+
+        .bg-glass { background-color: rgba(255, 255, 255, 0.95); }
+        html[data-theme='dark'] .bg-glass { background-color: rgba(0, 0, 0, 0.85); }
+
+        /* Floating key animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50%      { transform: translateY(-14px) rotate(-8deg); }
+        }
+        .float-key { animation: float 4s ease-in-out infinite; }
+
+        /* Gentle pulse on the lock icon */
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(234,179,8,0.5); }
+            50%      { box-shadow: 0 0 0 22px rgba(234,179,8,0); }
+        }
+        .soft-pulse { animation: softPulse 2.4s ease-out infinite; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- Theme & RTL toggle (top-right, minimal) -->
+    <div class="absolute top-5 right-5 rtl:right-auto rtl:left-5 z-30 flex items-center gap-3">
+        <button id="theme-toggle" class="p-2.5 rounded-full bg-hover border border-border shadow-sm text-primary-text hover:text-[#EAB308] transition">
+            <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <button id="lang-icon" class="p-2.5 rounded-full bg-hover border border-border shadow-sm text-primary-text hover:text-[#EAB308] transition" title="Toggle RTL">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+        </button>
+    </div>
+
+    <!-- Decorative background blobs -->
+    <div class="absolute -top-40 -right-40 w-[28rem] h-[28rem] bg-[#EAB308]/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] bg-[#B45309]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Floating key decorations -->
+    <i class="fas fa-key absolute top-[18%] left-[10%] text-[#EAB308]/20 text-6xl float-key pointer-events-none hidden sm:block"></i>
+    <i class="fas fa-key absolute bottom-[15%] right-[10%] text-[#B45309]/20 text-7xl float-key pointer-events-none hidden sm:block" style="animation-delay:-2s;"></i>
+    <i class="fas fa-lock absolute top-[30%] right-[18%] text-[#EAB308]/15 text-5xl float-key pointer-events-none hidden lg:block" style="animation-delay:-1s;"></i>
+
+    <!-- Main content -->
+    <main class="relative z-10 w-full max-w-3xl mx-auto px-5 sm:px-8 py-16 text-center">
+
+        <!-- Big 404 with lock icon -->
+        <div class="relative inline-flex items-center justify-center mb-8">
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-custom-gradient flex items-center justify-center shadow-2xl soft-pulse">
+                <i class="fas fa-lock text-white text-4xl sm:text-5xl"></i>
+            </div>
+            <!-- Floating key on top-right of the lock -->
+            <div class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-background border border-border shadow-lg flex items-center justify-center">
+                <i class="fas fa-key text-[#EAB308] text-lg sm:text-xl"></i>
+            </div>
+        </div>
+
+        <!-- 404 heading -->
+        <h1 class="text-7xl sm:text-8xl md:text-9xl font-serif font-black leading-none tracking-tight mb-4">
+            <span class="text-[#EAB308]">4</span><span class="text-primary-text">0</span><span class="text-[#B45309]">4</span>
+        </h1>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-black text-primary-text mb-5">
+          This Door is Locked
+        </h2>
+
+        <p class="text-secondary-text text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-10">
+          The page you're looking for doesn't exist, was moved, or is temporarily unavailable.
+          But don't worry — our locksmiths know their way around. Let's get you back to safety.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+            <a href="index.html" class="btn-primary w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-base shadow-md flex items-center justify-center gap-2">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="contact.html" class="btn-outline w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-2">
+                <i class="fas fa-phone"></i> Contact Us
+            </a>
+        </div>
+
+        <!-- Quick links -->
+        <div class="bg-hover border border-border rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto">
+            <p class="text-primary-text font-bold text-sm uppercase tracking-widest mb-5">
+                <i class="fas fa-compass text-[#EAB308] mr-2"></i>Popular Destinations
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <a href="index.html" class="group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-background border border-transparent hover:border-border transition-all">
+                    <i class="fas fa-home text-[#B45309] text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-primary-text">Home</span>
+                </a>
+                <a href="services.html" class="group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-background border border-transparent hover:border-border transition-all">
+                    <i class="fas fa-tools text-[#B45309] text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-primary-text">Services</span>
+                </a>
+                <a href="pricing.html" class="group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-background border border-transparent hover:border-border transition-all">
+                    <i class="fas fa-tag text-[#B45309] text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-primary-text">Pricing</span>
+                </a>
+                <a href="contact.html" class="group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-background border border-transparent hover:border-border transition-all">
+                    <i class="fas fa-envelope text-[#B45309] text-xl group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-primary-text">Contact</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Emergency footer text -->
+        <p class="text-secondary-text text-sm mt-10">
+            <i class="fas fa-bolt text-[#EAB308] mr-1"></i>
+            Emergency? Call us anytime —
+            <a href="tel:+15551234567" class="font-bold text-[#EAB308] hover:underline">(555) 123‑4567</a>
+        </p>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Theme toggle
+            const themeBtn = document.getElementById('theme-toggle');
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+
+            themeBtn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            });
+
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // Apply stored RTL direction if any
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+            
+            const langBtn = document.getElementById('lang-icon');
+            if(langBtn) {
+                langBtn.addEventListener('click', () => {
+                    const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                    localStorage.setItem('language', current);
+                    html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
