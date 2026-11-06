@@ -181,17 +181,42 @@
     
         .bg-glass { background-color: rgba(255, 255, 255, 0.95); }
         html[data-theme='dark'] .bg-glass { background-color: rgba(0, 0, 0, 0.85); }
-        </style>
+        
+        /* Typography Hierarchy Standards: Heading font-weight 600, paragraph font-weight 400-550 */
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-weight: 600 !important;
+        }
+        p, .paragraph-body {
+            font-weight: 450;
+        }
+        b, strong, .font-bold {
+            font-weight: 600;
+        }
+    
+    </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
     <header class="sticky top-0 z-50 w-full bg-background border-b border-border shadow-sm transition-all duration-300" id="main-header">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between h-[70px]">
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group">
-                <i class="fas fa-key text-3xl text-[#EAB308]"></i>
-                <span class="text-2xl font-serif font-black tracking-tight text-primary-text group-hover:text-[#EAB308] transition-colors">
-                    <span class="text-[#EAB308]">SecureLock</span>
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#EAB308] rounded-xl px-1">
+                <span class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#EAB308] to-[#B45309] shadow-md shadow-[#EAB308]/25 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="7.5" cy="15.5" r="4.5"/>
+                        <path d="m10.7 12.3 8.8-8.8"/>
+                        <path d="m15.5 7.5 2 2"/>
+                        <path d="m18 5 2 2"/>
+                    </svg>
+                    <span class="absolute -top-1 -right-1 w-3 h-3 bg-[#EAB308] border-2 border-background rounded-full"></span>
                 </span>
+                <div class="flex flex-col text-left rtl:text-right">
+                    <span class="text-xl sm:text-2xl font-serif font-black tracking-tight text-primary-text group-hover:text-[#EAB308] transition-colors leading-none">
+                        Secure<span class="text-[#EAB308]">Lock</span>
+                    </span>
+                    <span class="text-[10px] tracking-widest uppercase font-bold text-secondary-text group-hover:text-primary-text transition-colors mt-0.5">
+                        Locksmith & Keys
+                    </span>
+                </div>
             </a>
 
             
@@ -214,20 +239,30 @@
                 <a href="contact.html" class="nav-link py-2 px-3 rounded-full hover:bg-hover hover:hover:text-accent text-primary-text font-semibold transition-all text-primary-text">Contact</a>
             </div>
 
-            <div class="hidden xl:flex items-center space-x-3 rtl:space-x-reverse">
-                <div class="flex bg-hover rounded-full p-1 border border-border">
-                    <button id="theme-toggle" class="p-1.5 rounded-full hover:bg-background shadow-sm text-primary-text transition">
-                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            <div class="hidden xl:flex items-center gap-3">
+                <!-- Theme and RTL Buttons Perfectly Aligned -->
+                <div class="flex items-center bg-hover rounded-full p-1 border border-border shadow-sm">
+                    <button id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle Theme" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-background text-primary-text hover:text-[#EAB308] transition-all">
+                        <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                     </button>
-                    <button id="lang-icon" class="p-1.5 rounded-full hover:bg-background shadow-sm text-primary-text transition">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                    <div class="w-px h-4 bg-border my-auto"></div>
+                    <button id="lang-icon" type="button" aria-label="Toggle RTL/LTR layout" title="Toggle RTL / LTR" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-background text-primary-text hover:text-[#EAB308] transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
                     </button>
                 </div>
+
+                <!-- Visible Login Button -->
+                <button id="header-login-btn" type="button" class="btn-outline px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:shadow-md transition-all">
+                    <i class="fas fa-user-circle text-base"></i>
+                    <span>Login</span>
+                </button>
                 
-                <div class="flex items-center space-x-2 rtl:space-x-reverse pl-2 rtl:pl-0 rtl:pr-2 border-l rtl:border-l-0 rtl:border-r border-[#EAB308]">
-                    <a href="contact.html" class="btn-primary px-6 py-2 rounded-full font-bold shadow-md flex items-center gap-2">Let's Talk <i class="fas fa-arrow-right"></i></a>
-                </div>
+                <!-- CTA Button -->
+                <a href="contact.html" class="btn-primary px-5 py-2 rounded-full font-bold text-sm shadow-md flex items-center gap-2">
+                    <span>Let's Talk</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
             </div>
 
             <div class="xl:hidden flex items-center gap-3">
@@ -251,7 +286,7 @@
         <i class="fas fa-tools mr-2"></i>Our Services
       </span>
 
-      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-tight mb-6 drop-shadow-lg">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white leading-tight mb-6 drop-shadow-lg">
         Complete Locksmith<br>
         <span class="text-[#EAB308]">Solutions for Every Need</span>
       </h1>
@@ -287,7 +322,7 @@
 
       <div class="text-center max-w-3xl mx-auto mb-14">
         <span class="text-[#B45309] font-bold text-sm tracking-widest uppercase">What We Offer</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-primary-text mt-3 mb-5">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-primary-text mt-3 mb-5">
           Our Core Services
         </h2>
         <p class="text-secondary-text text-lg leading-relaxed">
@@ -295,89 +330,185 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 max-w-6xl mx-auto">
-        <!-- Service 1 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-door-open text-white text-2xl"></i>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Service 1: Lockouts -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-lockout.jpg" alt="Emergency door lockout assistance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EAB308] text-white shadow-md">
+                <i class="fas fa-bolt text-xs"></i> 24/7 Response
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-door-open text-[#FACC15] mr-1"></i> Home, Auto & Office
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Emergency Lockout</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            24/7 rapid response for home, office, and vehicle lockouts. Average arrival in 30 minutes.
-          </p>
-          <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Request Now <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Emergency Lockouts</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Locked out of your home, car, or storefront? Our fully equipped mobile dispatch arrives in ~30 minutes with damage-free bypass tools.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Avg Arrival: 30m</span>
+              <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Call Lockout Help</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Service 2 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-key text-white text-2xl"></i>
+        <!-- Service 2: Key Duplication -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-keydup.jpg" alt="Precision key duplication and laser cutting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#B45309] text-white shadow-md">
+                <i class="fas fa-microchip text-xs"></i> High-Precision
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-key text-[#FACC15] mr-1"></i> While-You-Wait Duplication
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Key Duplication</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            Precision key cutting for house, office, padlock, and transponder car keys — while you wait.
-          </p>
-          <a href="home2.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Key Duplication</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Laser-calibrated key duplication for standard house keys, high-security dimple keys, tubular keys, and laser-cut automotive blanks.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Guaranteed Fit</span>
+              <a href="pricing.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>View Key Pricing</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Service 3 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-tools text-white text-2xl"></i>
+        <!-- Service 3: Master Key Systems -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-masterkey.jpg" alt="Commercial master key system architecture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EAB308] text-white shadow-md">
+                <i class="fas fa-building text-xs"></i> Commercial
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-sitemap text-[#FACC15] mr-1"></i> Tiered Access Tiers
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Lock Repair & Replacement</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            Fix jammed, worn, or broken locks or replace them with premium hardware from trusted brands.
-          </p>
-          <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Book Repair <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Master Key Systems</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Custom-engineered master key frameworks for apartment complexes, hospitals, corporate facilities, and multi-tenant commercial offices.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Custom Blueprints</span>
+              <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Consult Specialist</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Service 4 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-car text-white text-2xl"></i>
+        <!-- Service 4: Lock Repair & Replacement -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-lockrepair.jpg" alt="Lock repair and cylinder replacement hardware" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#B45309] text-white shadow-md">
+                <i class="fas fa-tools text-xs"></i> Repair & Replace
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-wrench text-[#FACC15] mr-1"></i> Grade-1 Hardware
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Automotive Locksmith</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            Car lockout, key replacement, and transponder programming for all major brands on-site.
-          </p>
-          <a href="automotive.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Learn More <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Lock Repair & Replacement</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Fix jammed mortise locks, sticky deadbolts, broken cylinders, or upgrade to ANSI Grade 1 high-security hardware from Schlage, Medeco & Yale.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Warranty Included</span>
+              <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Book Lock Repair</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Service 5 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-fingerprint text-white text-2xl"></i>
+        <!-- Service 5: Smart Locks -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-smartlock.jpg" alt="Smart lock and keypad keyless entry installation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EAB308] text-white shadow-md">
+                <i class="fas fa-wifi text-xs"></i> Keyless Tech
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-fingerprint text-[#FACC15] mr-1"></i> Biometric & App Controlled
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Smart Lock Installation</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            Upgrade to keyless entry with smart locks, keypads, and app-controlled access systems.
-          </p>
-          <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Get a Quote <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Smart Locks & Keyless Entry</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Modern digital locks, Bluetooth/WiFi entry, biometric fingerprint readers, and automated keypad systems installed with complete user setup.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Smart Home Sync</span>
+              <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Get Smart Lock</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Service 6 -->
-        <div class="bg-background rounded-3xl border border-border p-8 shadow-sm hover:shadow-xl hover:border-[#EAB308] transition-all duration-300 text-center group flex flex-col h-full">
-          <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
-            <i class="fas fa-shield-alt text-white text-2xl"></i>
+        <!-- Service 6: Safe Services -->
+        <div class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-52 overflow-hidden">
+            <img src="assets/service-safe.jpg" alt="Safe opening, dial combination and electronic safe servicing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute top-4 left-4 rtl:left-auto rtl:right-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#B45309] text-white shadow-md">
+                <i class="fas fa-vault text-xs"></i> Certified Vault
+              </span>
+            </div>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs font-medium">
+              <span class="bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-shield-alt text-[#FACC15] mr-1"></i> Non-Destructive Opening
+              </span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-primary-text mb-3">Security Consultation</h3>
-          <p class="text-secondary-text leading-relaxed text-sm mb-5">
-            Free on-site assessments to identify weak points and recommend the right security upgrades.
-          </p>
-          <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all mt-auto mx-auto">
-            Book a Visit <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+          <div class="p-6 text-center sm:text-left rtl:sm:text-right flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">Safe & Vault Services</h3>
+            <p class="text-secondary-text leading-relaxed text-sm mb-5">
+              Professional safe opening, combination changes, keypad retrofit upgrades, and maintenance for home fire safes, gun safes, and commercial vaults.
+            </p>
+            <div class="pt-4 border-t border-border mt-auto flex items-center justify-between">
+              <span class="text-xs font-bold text-secondary-text">Confidential & Bonded</span>
+              <a href="contact.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Book Safe Service</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -392,7 +523,7 @@
 
       <div class="text-center max-w-3xl mx-auto mb-14">
         <span class="text-[#B45309] font-bold text-sm tracking-widest uppercase">Featured Service</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-primary-text mt-3 mb-5">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-primary-text mt-3 mb-5">
           Lock Repair & Replacement
         </h2>
         <p class="text-secondary-text text-lg leading-relaxed">
@@ -408,7 +539,7 @@
               <i class="fas fa-wrench text-white text-xl"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-primary-text mb-1">Same‑Day Repair</h3>
+              <h3 class="text-lg font-semibold text-primary-text mb-1">Same‑Day Repair</h3>
               <p class="text-secondary-text leading-relaxed text-sm">
                 Most lock repairs are completed on the first visit — no waiting for parts.
               </p>
@@ -420,7 +551,7 @@
               <i class="fas fa-cogs text-white text-xl"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-primary-text mb-1">All Lock Types</h3>
+              <h3 class="text-lg font-semibold text-primary-text mb-1">All Lock Types</h3>
               <p class="text-secondary-text leading-relaxed text-sm">
                 Deadbolts, knobs, mortise locks, cylinders, and high-security hardware.
               </p>
@@ -432,7 +563,7 @@
               <i class="fas fa-award text-white text-xl"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-primary-text mb-1">Premium Hardware</h3>
+              <h3 class="text-lg font-semibold text-primary-text mb-1">Premium Hardware</h3>
               <p class="text-secondary-text leading-relaxed text-sm">
                 We use only trusted brands known for durability and long-term reliability.
               </p>
@@ -444,7 +575,7 @@
               <i class="fas fa-file-invoice-dollar text-white text-xl"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-primary-text mb-1">Transparent Pricing</h3>
+              <h3 class="text-lg font-semibold text-primary-text mb-1">Transparent Pricing</h3>
               <p class="text-secondary-text leading-relaxed text-sm">
                 Firm quote before we start. No surprises, no hidden fees, ever.
               </p>
@@ -466,7 +597,7 @@
                 <i class="fas fa-clock text-white text-lg"></i>
               </div>
               <div>
-                <p class="text-2xl font-black text-primary-text leading-none">30 min</p>
+                <p class="text-2xl font-medium text-primary-text leading-none">30 min</p>
                 <p class="text-secondary-text text-xs font-semibold">Avg Response Time</p>
               </div>
             </div>
@@ -485,7 +616,7 @@
 
       <div class="text-center max-w-3xl mx-auto mb-14">
         <span class="text-[#B45309] font-bold text-sm tracking-widest uppercase">Service Categories</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-primary-text mt-3 mb-5">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-primary-text mt-3 mb-5">
           Who We Serve
         </h2>
         <p class="text-secondary-text text-lg leading-relaxed">
@@ -505,7 +636,7 @@
             <div class="inline-flex items-center gap-2 text-[#B45309] text-xs font-bold uppercase tracking-widest mb-2">
               <i class="fas fa-home"></i> Residential
             </div>
-            <h3 class="text-xl font-bold text-primary-text mb-2">Home Locksmith Services</h3>
+            <h3 class="text-xl font-semibold text-primary-text mb-2">Home Locksmith Services</h3>
             <p class="text-secondary-text text-sm leading-relaxed mb-4">
               Lock repair, rekeying, deadbolt installation, and smart lock upgrades to keep your family safe.
             </p>
@@ -525,7 +656,7 @@
             <div class="inline-flex items-center gap-2 text-[#B45309] text-xs font-bold uppercase tracking-widest mb-2">
               <i class="fas fa-building"></i> Commercial
             </div>
-            <h3 class="text-xl font-bold text-primary-text mb-2">Business Security Solutions</h3>
+            <h3 class="text-xl font-semibold text-primary-text mb-2">Business Security Solutions</h3>
             <p class="text-secondary-text text-sm leading-relaxed mb-4">
               Master key systems, access control, panic bars, and high-security locks for offices and retail.
             </p>
@@ -545,7 +676,7 @@
             <div class="inline-flex items-center gap-2 text-[#B45309] text-xs font-bold uppercase tracking-widest mb-2">
               <i class="fas fa-car"></i> Automotive
             </div>
-            <h3 class="text-xl font-bold text-primary-text mb-2">Car Locksmith Services</h3>
+            <h3 class="text-xl font-semibold text-primary-text mb-2">Car Locksmith Services</h3>
             <p class="text-secondary-text text-sm leading-relaxed mb-4">
               Car lockouts, transponder key programming, remote fobs, and ignition repairs on-site.
             </p>
@@ -571,7 +702,7 @@
 
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="text-[#FACC15] font-bold text-sm tracking-widest uppercase">What to Expect</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white mt-3 mb-5">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white mt-3 mb-5">
           Our Simple 4‑Step Process
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed">
@@ -584,10 +715,10 @@
         <!-- Step 1 -->
         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7 text-center hover:bg-white/10 transition-all">
           <div class="w-16 h-16 mx-auto rounded-full bg-custom-gradient flex items-center justify-center shadow-lg mb-5">
-            <i class="fas fa-phone-volume" text-white text-xl"></i>
+            <i class="fas fa-phone text-white text-xl"></i>
           </div>
           <span class="inline-block text-[#FACC15] text-xs font-black tracking-widest mb-2">STEP 1</span>
-          <h3 class="font-bold text-white mb-2">Call or Book Online</h3>
+          <h3 class="font-semibold text-white mb-2">Call or Book Online</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
             Reach us 24/7 by phone or our quick online form.
           </p>
@@ -599,7 +730,7 @@
             <i class="fas fa-clipboard-list text-white text-xl"></i>
           </div>
           <span class="inline-block text-[#FACC15] text-xs font-black tracking-widest mb-2">STEP 2</span>
-          <h3 class="font-bold text-white mb-2">Free Assessment</h3>
+          <h3 class="font-semibold text-white mb-2">Free Assessment</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
             We evaluate the issue and give you a firm quote.
           </p>
@@ -611,7 +742,7 @@
             <i class="fas fa-tools text-white text-xl"></i>
           </div>
           <span class="inline-block text-[#FACC15] text-xs font-black tracking-widest mb-2">STEP 3</span>
-          <h3 class="font-bold text-white mb-2">Expert Service</h3>
+          <h3 class="font-semibold text-white mb-2">Expert Service</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
             Our technician arrives on time and completes the job.
           </p>
@@ -623,7 +754,7 @@
             <i class="fas fa-check-double text-white text-xl"></i>
           </div>
           <span class="inline-block text-[#FACC15] text-xs font-black tracking-widest mb-2">STEP 4</span>
-          <h3 class="font-bold text-white mb-2">Final Check</h3>
+          <h3 class="font-semibold text-white mb-2">Final Check</h3>
           <p class="text-gray-400 text-sm leading-relaxed">
             We test everything with you and back it with a guarantee.
           </p>
@@ -636,7 +767,7 @@
           <i class="fas fa-shield-alt text-white text-3xl"></i>
         </div>
         <div class="flex-1 text-center sm:text-left">
-          <h3 class="text-2xl font-serif font-black text-white mb-2">100% Satisfaction Guarantee</h3>
+          <h3 class="text-2xl font-serif font-semibold text-white mb-2">100% Satisfaction Guarantee</h3>
           <p class="text-white/90 text-sm leading-relaxed">
             If you're not happy with our work, we'll make it right — free of charge. That's our promise.
           </p>
@@ -663,7 +794,7 @@
           <i class="fas fa-headset text-white text-3xl"></i>
         </div>
 
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-white mb-6 leading-tight">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-white mb-6 leading-tight">
           Need a Locksmith Right Now?
         </h2>
         <p class="text-white/90 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
@@ -687,15 +818,183 @@
     </div>
   </section>
 
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION — PROVEN CASE STUDIES & REAL-WORLD RESULTS
+  ═══════════════════════════════════════════ -->
+  <section class="py-20 sm:py-24 bg-hover border-t border-border">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-[#B45309] font-bold text-sm tracking-widest uppercase">Proven Track Record</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-primary-text mt-3 mb-5">
+          Real Security Case Studies
+        </h2>
+        <p class="text-secondary-text text-lg leading-relaxed">
+          See how our master technicians solve urgent challenges for residential homes, corporate facilities, and stranded drivers across the region.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+        <!-- Case 1: Residential Rekey & Smart Automation -->
+        <article class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-56 overflow-hidden">
+            <img src="assets/case-residential.jpg" alt="Historic Westside Residence Security Retrofit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 px-3 py-1 rounded-full text-xs font-black bg-[#EAB308] text-white shadow-md">
+              Residential Retrofit
+            </span>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs">
+              <span class="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-map-marker-alt text-[#FACC15] mr-1"></i> Westside Historic District
+              </span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-grow text-left rtl:text-right">
+            <div class="flex items-center justify-between text-xs font-semibold text-secondary-text mb-2.5">
+              <span>Client: Private Homeowner</span>
+              <span class="text-green-600 font-bold"><i class="fas fa-check-circle mr-1"></i>Completed 2 Hrs</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">
+              Historic Estate Lock Restoration & Keyless Entry
+            </h3>
+            <p class="text-secondary-text text-sm leading-relaxed mb-4">
+              <strong>Challenge:</strong> A 1920s heritage property had 6 misaligned mortise locks with missing keys after acquisition, leaving exterior doors vulnerable.
+            </p>
+            <p class="text-secondary-text text-sm leading-relaxed mb-6">
+              <strong>Solution:</strong> Restored original brass faceplates, repinned cylinders to a unified key system, and installed concealed smart deadbolts with keypad backup.
+            </p>
+            <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+              <span class="text-xs font-bold text-[#B45309]">ANSI Grade-1 Hardware</span>
+              <a href="services.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Explore Service</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 2: Commercial Master Key Architecture -->
+        <article class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-56 overflow-hidden">
+            <img src="assets/case-commercial.jpg" alt="Commercial Headquarters Master Key System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 px-3 py-1 rounded-full text-xs font-black bg-[#B45309] text-white shadow-md">
+              Commercial Master Key
+            </span>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs">
+              <span class="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-map-marker-alt text-[#FACC15] mr-1"></i> Midtown Financial Tower
+              </span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-grow text-left rtl:text-right">
+            <div class="flex items-center justify-between text-xs font-semibold text-secondary-text mb-2.5">
+              <span>Client: Multi-Tenant Tech Campus</span>
+              <span class="text-green-600 font-bold"><i class="fas fa-check-circle mr-1"></i>48 Doors Unified</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">
+              3-Tier Master Key Hierarchy for 48 Office Suites
+            </h3>
+            <p class="text-secondary-text text-sm leading-relaxed mb-4">
+              <strong>Challenge:</strong> Disorganized key duplication led to compromised server room security and excessive administrative key management overhead.
+            </p>
+            <p class="text-secondary-text text-sm leading-relaxed mb-6">
+              <strong>Solution:</strong> Designed a patent-protected restricted keyway hierarchy giving executives single-key access while restricting tenant sub-suites.
+            </p>
+            <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+              <span class="text-xs font-bold text-[#B45309]">Restricted Keyway</span>
+              <a href="services.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Commercial Plans</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 3: Midnight High-Security Vehicle Rescue -->
+        <article class="group bg-background rounded-3xl border border-border overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#EAB308] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+          <div class="relative h-56 overflow-hidden">
+            <img src="assets/case-automotive.jpg" alt="Luxury European Vehicle Emergency Lockout & Programming" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 px-3 py-1 rounded-full text-xs font-black bg-red-600 text-white shadow-md">
+              Midnight Roadside
+            </span>
+            <div class="absolute bottom-3 left-4 rtl:left-auto rtl:right-4 right-4 text-white text-xs">
+              <span class="bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/20">
+                <i class="fas fa-map-marker-alt text-[#FACC15] mr-1"></i> Highway 87 Rest Area
+              </span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-grow text-left rtl:text-right">
+            <div class="flex items-center justify-between text-xs font-semibold text-secondary-text mb-2.5">
+              <span>Client: BMW X5 Driver</span>
+              <span class="text-green-600 font-bold"><i class="fas fa-check-circle mr-1"></i>Dispatched in 22m</span>
+            </div>
+            <h3 class="text-xl font-semibold text-primary-text mb-2.5 group-hover:text-[#EAB308] transition-colors">
+              Laser Key Cut & Smart Fob Sync at 2:00 AM
+            </h3>
+            <p class="text-secondary-text text-sm leading-relaxed mb-4">
+              <strong>Challenge:</strong> Driver lost only smart proximity key fob while traveling late at night with zero dealership service open within 60 miles.
+            </p>
+            <p class="text-secondary-text text-sm leading-relaxed mb-6">
+              <strong>Solution:</strong> Dispatched roadside mobile workshop, laser-cut emergency physical key blade, and synced a brand-new transponder fob on-site.
+            </p>
+            <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+              <span class="text-xs font-bold text-[#B45309]">Zero-Damage Bypass</span>
+              <a href="automotive.html" class="text-[#EAB308] font-bold text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all">
+                <span>Automotive Care</span> <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Navigation prompt between pages -->
+      <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-background border border-border shadow-sm max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left rtl:sm:text-right">
+        <div>
+          <h4 class="text-lg font-semibold text-primary-text mb-1">Have a Unique Security Challenge?</h4>
+          <p class="text-sm text-secondary-text">Explore our transparent pricing tiers or speak directly with an on-duty master locksmith.</p>
+        </div>
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <a href="pricing.html" class="btn-outline px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2">
+            <span>Pricing Guide</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+          <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full font-bold text-sm shadow-md flex items-center gap-2">
+            <span>Get in Touch</span>
+            <i class="fas fa-phone text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
     <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
         <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 pb-8 xl:hidden max-h-[95vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
             <div class="flex justify-between items-center pb-4 border-b border-border">
-                <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group">
-                    <i class="fas fa-key text-3xl text-[#EAB308]"></i>
-                    <span class="text-2xl font-serif font-black tracking-tight text-[#EAB308]">SecureLock</span>
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <span class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-[#EAB308] to-[#B45309] shadow-md shadow-[#EAB308]/25">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="7.5" cy="15.5" r="4.5"/>
+                            <path d="m10.7 12.3 8.8-8.8"/>
+                            <path d="m15.5 7.5 2 2"/>
+                            <path d="m18 5 2 2"/>
+                        </svg>
+                    </span>
+                    <div class="flex flex-col text-left rtl:text-right">
+                        <span class="text-xl font-serif font-black tracking-tight text-primary-text leading-none">
+                            Secure<span class="text-[#EAB308]">Lock</span>
+                        </span>
+                        <span class="text-[9px] tracking-widest uppercase font-bold text-secondary-text mt-0.5">
+                            Locksmith & Keys
+                        </span>
+                    </div>
                 </a>
                 <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
@@ -719,17 +1018,26 @@
             </nav>
 
 
-            <div class="mt-4 flex flex-col gap-3 w-full border-t border-border pt-4">
-                <a href="contact.html" class="w-full text-center py-3 bg-[#EAB308] text-white hover:opacity-90 rounded-xl font-bold shadow-md transition-colors flex items-center justify-center gap-2">Let's Talk <i class="fas fa-arrow-right"></i></a>
+            <div class="mt-4 flex flex-col gap-2.5 w-full border-t border-border pt-4">
+                <!-- Mobile Login Option -->
+                <button id="mobile-drawer-login-btn" type="button" class="w-full text-center py-2.5 rounded-xl font-bold border-2 border-[#EAB308] text-[#EAB308] hover:bg-[#EAB308] hover:text-white transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Client Login</span>
+                </button>
+                <a href="contact.html" class="w-full text-center py-3 bg-[#EAB308] text-white hover:opacity-90 rounded-xl font-bold shadow-md transition-colors flex items-center justify-center gap-2">
+                    <span>Let's Talk</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
-            <div class="mt-4 bg-hover rounded-2xl p-1 flex justify-between items-center border border-border">
-                <button id="mobile-lang-icon-drawer" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl hover:bg-background text-primary-text hover:text-[#EAB308] transition-colors shadow-sm">
+            <!-- Mobile Theme and RTL Buttons Properly Aligned -->
+            <div class="mt-4 bg-hover rounded-2xl p-1 flex items-center border border-border">
+                <button id="mobile-lang-icon-drawer" type="button" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl hover:bg-background text-primary-text hover:text-[#EAB308] transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
-                    <span class="text-sm font-bold">RTL</span>
+                    <span class="text-sm font-bold">RTL / LTR</span>
                 </button>
-                <div class="w-px h-6 bg-border mx-1"></div>
-                <button id="drawer-theme-toggle" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl hover:bg-background text-primary-text hover:text-[#EAB308] transition-colors shadow-sm">
+                <div class="w-px h-6 bg-border"></div>
+                <button id="drawer-theme-toggle" type="button" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl hover:bg-background text-primary-text hover:text-[#EAB308] transition-colors">
                     <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                     <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                     <span class="text-sm font-bold">Theme</span>
@@ -742,9 +1050,23 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-12 pb-16 border-b border-gray-800">
                 <div class="lg:col-span-2">
-                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2 mb-4 group">
-                        <i class="fas fa-key text-3xl text-[#EAB308]"></i>
-                        <span class="text-2xl font-serif font-black tracking-tight text-[#EAB308]">SecureLock</span>
+                    <a href="index.html" class="inline-flex items-center gap-3 mb-4 group focus:outline-none">
+                        <span class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#EAB308] to-[#B45309] shadow-md shadow-[#EAB308]/25 group-hover:scale-105 transition-all duration-300">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="7.5" cy="15.5" r="4.5"/>
+                                <path d="m10.7 12.3 8.8-8.8"/>
+                                <path d="m15.5 7.5 2 2"/>
+                                <path d="m18 5 2 2"/>
+                            </svg>
+                        </span>
+                        <div class="flex flex-col text-left rtl:text-right">
+                            <span class="text-2xl font-serif font-black tracking-tight text-[#EAB308] leading-none">
+                                Secure<span class="text-white">Lock</span>
+                            </span>
+                            <span class="text-[10px] tracking-widest uppercase font-bold text-gray-400 mt-0.5">
+                                Locksmith & Keys
+                            </span>
+                        </div>
                     </a>
 <p class="text-lg leading-relaxed max-w-sm !text-gray-400">
 Your trusted partner in security. Providing expert locksmith services and precise key duplication with 24/7 emergency support.
@@ -755,33 +1077,33 @@ Your trusted partner in security. Providing expert locksmith services and precis
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-medium text-xl mb-6">View Pricing</h4>
+                    <h4 class="footer-heading font-semibold text-xl mb-6">View Pricing</h4>
                    <ul class="space-y-4">
-    <li><a href="#" class="footer-link">Residential Services</a></li>
-    <li><a href="#" class="footer-link">Commercial Locks</a></li>
-    <li><a href="#" class="footer-link">Automotive Locksmith</a></li>
-    <li><a href="#" class="footer-link">Key Duplication</a></li>
-</ul>
+                        <li><a href="pricing.html#pricing-plans" class="footer-link">Residential Services</a></li>
+                        <li><a href="pricing.html#pricing-plans" class="footer-link">Commercial Locks</a></li>
+                        <li><a href="automotive.html" class="footer-link">Automotive Locksmith</a></li>
+                        <li><a href="home2.html" class="footer-link">Key Duplication</a></li>
+                    </ul>
                 </div>
                                 <div>
-                    <h4 class="footer-heading font-medium text-xl mb-6">Contact</h4>
+                    <h4 class="footer-heading font-semibold text-xl mb-6">Contact</h4>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-[#FACC15] mt-1"></i> <span>123 Security Avenue,<br>Downtown, NY 12345</span></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-[#FACC15]"></i> <span>(555) 123-4567</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-[#FACC15]"></i> <span>(555) 123-4567</span></li>
                         <li class="flex items-center gap-3"><i class="fas fa-envelope text-[#FACC15]"></i> <span>info@securelock.com</span></li>
                     </ul>
                 </div>
 <div>
-                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-semibold text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
-                        <li><a href="delivery.html" class="footer-link">24/7 Availability</a></li>
-                        <li><a href="custom.html" class="footer-link">Security Consultation</a></li>
-                        <li><a href="bulk.html" class="footer-link">Pricing Guide</a></li>
+                        <li><a href="services.html" class="footer-link">Our Services</a></li>
+                        <li><a href="automotive.html" class="footer-link">Automotive Keys</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing Guide</a></li>
                         <li><a href="contact.html" class="footer-link">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-semibold text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
@@ -942,6 +1264,131 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+</script>
+
+
+    <!-- ==========================================
+         LOGIN / CLIENT PORTAL MODAL
+    ========================================== -->
+    <div id="login-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+        <div id="login-modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0"></div>
+        <div id="login-modal-card" class="relative w-full max-w-md bg-background border border-border rounded-3xl shadow-2xl p-6 sm:p-8 transform scale-95 opacity-0 transition-all duration-300 z-10">
+            <button id="login-modal-close" type="button" class="absolute top-5 right-5 rtl:right-auto rtl:left-5 text-secondary-text hover:text-primary-text p-2 rounded-full hover:bg-hover transition-colors" aria-label="Close login dialog">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#EAB308] to-[#B45309] shadow-lg shadow-[#EAB308]/30 text-white mb-3">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="7.5" cy="15.5" r="4.5"/>
+                        <path d="m10.7 12.3 8.8-8.8"/>
+                        <path d="m15.5 7.5 2 2"/>
+                        <path d="m18 5 2 2"/>
+                    </svg>
+                </div>
+                <h3 id="login-modal-title" class="text-2xl font-serif font-semibold text-primary-text">Client Portal</h3>
+                <p class="text-sm text-secondary-text mt-1">Sign in to track service requests, manage keys, and view invoices.</p>
+            </div>
+            <form id="login-form" class="space-y-4" onsubmit="event.preventDefault(); const btn=document.getElementById('login-submit-btn'); btn.innerHTML='<i class=\'fas fa-circle-notch fa-spin mr-2\'></i> Signing in...'; setTimeout(()=>{ alert('Welcome back! You have successfully signed in to SecureLock Client Portal.'); window.location.reload(); }, 900);">
+                <div>
+                    <label for="login-email" class="block text-xs font-bold uppercase tracking-wider text-secondary-text mb-1">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-secondary-text">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </span>
+                        <input id="login-email" type="email" required placeholder="name@example.com" class="w-full pl-10 rtl:pl-3 rtl:pr-10 pr-3 py-2.5 rounded-xl bg-hover border border-border text-primary-text placeholder-secondary-text/60 focus:outline-none focus:ring-2 focus:ring-[#EAB308] focus:border-transparent text-sm transition-all" />
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label for="login-password" class="block text-xs font-bold uppercase tracking-wider text-secondary-text">Password</label>
+                        <a href="contact.html" class="text-xs text-[#EAB308] hover:underline font-semibold">Forgot?</a>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-secondary-text">
+                            <i class="fas fa-lock text-sm"></i>
+                        </span>
+                        <input id="login-password" type="password" required placeholder="••••••••" class="w-full pl-10 rtl:pl-3 rtl:pr-10 pr-3 py-2.5 rounded-xl bg-hover border border-border text-primary-text placeholder-secondary-text/60 focus:outline-none focus:ring-2 focus:ring-[#EAB308] focus:border-transparent text-sm transition-all" />
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs pt-1">
+                    <label class="flex items-center gap-2 cursor-pointer text-secondary-text">
+                        <input type="checkbox" class="w-4 h-4 rounded text-[#EAB308] focus:ring-[#EAB308] border-border bg-hover" checked>
+                        <span>Remember me</span>
+                    </label>
+                    <span class="text-xs text-secondary-text"><i class="fas fa-shield-alt text-[#EAB308] mr-1"></i>256-Bit SSL</span>
+                </div>
+                <button id="login-submit-btn" type="submit" class="btn-primary w-full py-3 rounded-xl font-bold text-sm shadow-lg flex items-center justify-center gap-2 mt-2">
+                    <i class="fas fa-sign-in-alt"></i> Sign In to Portal
+                </button>
+                <div class="text-center pt-3 border-t border-border">
+                    <p class="text-xs text-secondary-text">
+                        Need an account or emergency help? 
+                        <a href="contact.html" class="text-[#EAB308] font-bold hover:underline">Contact Dispatch</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<script>
+// Login Modal Controller
+(function() {
+    function initLoginModal() {
+        const modal = document.getElementById('login-modal');
+        const backdrop = document.getElementById('login-modal-backdrop');
+        const card = document.getElementById('login-modal-card');
+        const closeBtn = document.getElementById('login-modal-close');
+        const openBtns = [
+            document.getElementById('header-login-btn'),
+            document.getElementById('mobile-drawer-login-btn')
+        ].filter(Boolean);
+
+        if (!modal || !backdrop || !card) return;
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            });
+            const emailInput = document.getElementById('login-email');
+            if (emailInput) setTimeout(() => emailInput.focus(), 150);
+        }
+
+        function closeModal() {
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            card.classList.remove('scale-100', 'opacity-100');
+            card.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        openBtns.forEach(b => b.addEventListener('click', openModal));
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLoginModal);
+    } else {
+        initLoginModal();
+    }
+})();
 </script>
 
 </body>

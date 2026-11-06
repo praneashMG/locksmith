@@ -94,50 +94,40 @@
             50%      { box-shadow: 0 0 0 22px rgba(234,179,8,0); }
         }
         .soft-pulse { animation: softPulse 2.4s ease-out infinite; }
+    
+        /* Typography Hierarchy Standards: Heading font-weight 600, paragraph font-weight 400-550 */
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-weight: 600 !important;
+        }
+        p, .paragraph-body {
+            font-weight: 450;
+        }
+        b, strong, .font-bold {
+            font-weight: 600;
+        }
+    
     </style>
 </head>
 <body class="antialiased min-h-screen flex items-center justify-center relative overflow-hidden">
 
-    <!-- Theme & RTL toggle (top-right, minimal) -->
-    <div class="absolute top-5 right-5 rtl:right-auto rtl:left-5 z-30 flex items-center gap-3">
-        <button id="theme-toggle" class="p-2.5 rounded-full bg-hover border border-border shadow-sm text-primary-text hover:text-[#EAB308] transition">
-            <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <!-- Theme & RTL toggle (top-right, perfectly aligned pill) -->
+    <div class="absolute top-5 right-5 rtl:right-auto rtl:left-5 z-30 flex items-center bg-hover rounded-full p-1 border border-border shadow-sm">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Toggle Theme" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-background text-primary-text hover:text-[#EAB308] transition-all">
+            <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
         </button>
-        <button id="lang-icon" class="p-2.5 rounded-full bg-hover border border-border shadow-sm text-primary-text hover:text-[#EAB308] transition" title="Toggle RTL">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+        <div class="w-px h-4 bg-border my-auto"></div>
+        <button id="lang-icon" type="button" aria-label="Toggle RTL/LTR layout" title="Toggle RTL / LTR" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-background text-primary-text hover:text-[#EAB308] transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
         </button>
     </div>
 
-    <!-- Decorative background blobs -->
-    <div class="absolute -top-40 -right-40 w-[28rem] h-[28rem] bg-[#EAB308]/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] bg-[#B45309]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <!-- Floating key decorations -->
-    <i class="fas fa-key absolute top-[18%] left-[10%] text-[#EAB308]/20 text-6xl float-key pointer-events-none hidden sm:block"></i>
-    <i class="fas fa-key absolute bottom-[15%] right-[10%] text-[#B45309]/20 text-7xl float-key pointer-events-none hidden sm:block" style="animation-delay:-2s;"></i>
-    <i class="fas fa-lock absolute top-[30%] right-[18%] text-[#EAB308]/15 text-5xl float-key pointer-events-none hidden lg:block" style="animation-delay:-1s;"></i>
-
-    <!-- Main content -->
-    <main class="relative z-10 w-full max-w-3xl mx-auto px-5 sm:px-8 py-16 text-center">
-
-        <!-- Big 404 with lock icon -->
-        <div class="relative inline-flex items-center justify-center mb-8">
-            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-custom-gradient flex items-center justify-center shadow-2xl soft-pulse">
-                <i class="fas fa-lock text-white text-4xl sm:text-5xl"></i>
-            </div>
-            <!-- Floating key on top-right of the lock -->
-            <div class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-background border border-border shadow-lg flex items-center justify-center">
-                <i class="fas fa-key text-[#EAB308] text-lg sm:text-xl"></i>
-            </div>
-        </div>
-
         <!-- 404 heading -->
-        <h1 class="text-7xl sm:text-8xl md:text-9xl font-serif font-black leading-none tracking-tight mb-4">
+        <h1 class="text-7xl sm:text-8xl md:text-9xl font-serif font-semibold leading-none tracking-tight mb-4">
             <span class="text-[#EAB308]">4</span><span class="text-primary-text">0</span><span class="text-[#B45309]">4</span>
         </h1>
 
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-black text-primary-text mb-5">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-primary-text mb-5">
           This Door is Locked
         </h2>
 
